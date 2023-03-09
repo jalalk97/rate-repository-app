@@ -77,10 +77,10 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
     alignItems: "flex-start",
     marginLeft: 20,
+    paddingRight: 40,
   },
   badge: {
     backgroundColor: theme.colors.primary,
-    color: theme.colors.white,
     padding: 6,
     borderRadius: 5,
   },
