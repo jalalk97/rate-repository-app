@@ -1,5 +1,6 @@
 import React from "react";
 import { View, StyleSheet, Pressable, Alert } from "react-native";
+import { useNavigate } from "react-router-native";
 import { Formik, FormikProps } from "formik";
 import * as yup from "yup";
 
@@ -11,6 +12,7 @@ import useSignIn from "../hooks/useSignIn";
 
 const SignIn = () => {
   const [signIn] = useSignIn();
+  const navigate = useNavigate();
 
   const onSubmit = async (values: LoginFormValues) => {
     const { username, password } = values;
@@ -19,6 +21,7 @@ const SignIn = () => {
       const { data } = await signIn({ username, password });
       console.log(data?.authenticate.accessToken);
       Alert.alert(JSON.stringify(data?.authenticate.accessToken));
+      navigate("/");
     } catch (err) {
       console.log(err);
     }
