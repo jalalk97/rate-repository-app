@@ -10,6 +10,17 @@ export interface Repository {
   ownerAvatarUrl: string;
 }
 
+export interface RepositoryEdge {
+  node: Repository;
+  cursor: string;
+}
+
+export interface RepositoriesResponse {
+  repositories: {
+    edges: RepositoryEdge[];
+  };
+}
+
 export interface LoginFormValues {
   Username: string;
   Password: string;
