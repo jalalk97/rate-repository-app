@@ -22,6 +22,12 @@ export interface RepositoriesResponse {
 }
 
 export interface LoginFormValues {
-  Username: string;
-  Password: string;
+  username: string;
+  password: string;
+}
+
+export interface AuthenticateResult {
+  authenticate: {
+    accessToken: string;
+  };
 }
