@@ -3,7 +3,6 @@
   "compilerOptions": {
     "strict": true,
     "allowJs": false,
-    "baseUrl": "src",
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
