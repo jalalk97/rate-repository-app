@@ -31,3 +31,10 @@ export interface AuthenticateResult {
     accessToken: string;
   };
 }
+
+export interface CurrentUserResponse {
+  me: {
+    id: string;
+    username: string;
+  };
+}

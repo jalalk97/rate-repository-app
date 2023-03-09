@@ -1,23 +1,26 @@
 import React from "react";
-import { StyleSheet, Pressable } from "react-native";
+import { StyleSheet, Pressable, GestureResponderEvent } from "react-native";
 import { Link } from "react-router-native";
 
 import theme from "../theme";
 import Text from "./Text";
 
-const AppBarTab = ({ tabName, link }: Props) => {
-  return (
-    <Pressable>
-      <Link to={link}>
-        <Text style={styles.item}>{tabName}</Text>
-      </Link>
+const AppBarTab = ({ tabName, link, onPress }: Props) => {
+  return link ? (
+    <Link to={link}>
+      <Text style={styles.item}>{tabName}</Text>
+    </Link>
+  ) : (
+    <Pressable onPress={onPress}>
+      <Text style={styles.item}>{tabName}</Text>
     </Pressable>
   );
 };
 
 interface Props {
   tabName: string;
-  link: string;
+  link?: string;
+  onPress?: (event: GestureResponderEvent) => void;
 }
 
 const styles = StyleSheet.create({
