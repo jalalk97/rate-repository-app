@@ -27,6 +27,10 @@ const SignIn = () => {
     }
   };
 
+  return <SignInContainer onSubmit={onSubmit} />;
+};
+
+export const SignInContainer = ({ onSubmit }: SignInContainerProps) => {
   return (
     <Formik
       initialValues={initialValues}
@@ -51,6 +55,10 @@ const SignIn = () => {
     </Formik>
   );
 };
+
+interface SignInContainerProps {
+  onSubmit: (values: LoginFormValues) => Promise<void>;
+}
 
 const initialValues: LoginFormValues = {
   username: "",
