@@ -19,7 +19,7 @@ const RepositoryItem = ({
   },
 }: Props) => {
   return (
-    <View style={styles.container}>
+    <View testID="repositoryItem" style={styles.container}>
       <View style={styles.firstRow}>
         <View style={styles.avatar}>
           <Image style={styles.avatar} source={{ uri: ownerAvatarUrl }} />
