@@ -13,6 +13,7 @@ const SingleRepository = () => {
   const { id } = useParams();
   const { data } = useQuery<GetRepositoryResponse>(GET_REPOSITORY, {
     variables: { repositoryId: id },
+    fetchPolicy: "cache-and-network",
   });
 
   if (!data) {
@@ -66,7 +67,7 @@ const ReviewItem = ({ review }: ReviewItemProps) => {
       <View style={styles.right}>
         <Text fontWeight="bold">{username}</Text>
         <Text color="textSecondary">{createdAt.split("T")[0]}</Text>
-        <Text>{text}</Text>
+        {text && <Text>{text}</Text>}
       </View>
     </View>
   );
@@ -91,10 +92,10 @@ const styles = StyleSheet.create({
   },
   left: {
     marginRight: 15,
-    flexGrow: 1,
   },
   right: {
     flexDirection: "column",
+    flexGrow: 1,
     justifyContent: "flex-start",
     paddingRight: 51,
   },

@@ -66,3 +66,20 @@ export interface ReviewEdge {
 export interface ReviewConnection {
   edges: ReviewEdge[];
 }
+
+export interface NewReviewFormValues {
+  ownerName: string;
+  repositoryName: string;
+  rating: number;
+  text: string;
+}
+
+export interface CreateReviewInput {
+  review: NewReviewFormValues;
+}
+
+export interface CreateReviewResult {
+  createReview: {
+    repositoryId: string;
+  };
+}

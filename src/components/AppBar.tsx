@@ -25,14 +25,14 @@ const AppBar = () => {
     <View style={styles.container}>
       <ScrollView horizontal>
         <AppBarTab tabName="Repositories" link="/" />
-        {data?.me ? (
+        {data?.me && <AppBarTab tabName="Create a review" link="/review" />}
+        {data?.me && (
           <AppBarTab
             tabName="Sign out"
             onPress={async () => await handleSignOut()}
           />
-        ) : (
-          <AppBarTab tabName="Sign in" link="/signin" />
         )}
+        {!data?.me && <AppBarTab tabName="Sign in" link="/signin" />}
       </ScrollView>
     </View>
   );
