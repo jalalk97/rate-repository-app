@@ -8,6 +8,7 @@ export interface Repository {
   ratingAverage: number;
   reviewCount: number;
   ownerAvatarUrl: string;
+  url: string;
 }
 
 export interface RepositoryEdge {
@@ -37,4 +38,8 @@ export interface CurrentUserResponse {
     id: string;
     username: string;
   };
+}
+
+export interface GetRepositoryResponse {
+  repository: Repository;
 }

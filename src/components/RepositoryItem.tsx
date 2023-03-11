@@ -1,8 +1,9 @@
 import React from "react";
-import { Image, StyleSheet, View } from "react-native";
+import { Image, Linking, StyleSheet, View } from "react-native";
 
 import theme from "../theme";
 import { Repository } from "../types";
+import Button from "./Button";
 import RepositoryStatistic from "./RepositoryStatistic";
 import Text from "./Text";
 
@@ -16,7 +17,9 @@ const RepositoryItem = ({
     language,
     description,
     fullName,
+    url,
   },
+  showButton = false,
 }: Props) => {
   return (
     <View testID="repositoryItem" style={styles.container}>
@@ -44,12 +47,16 @@ const RepositoryItem = ({
         <RepositoryStatistic label="Reviews" number={reviewCount} />
         <RepositoryStatistic label="Rating" number={ratingAverage} />
       </View>
+      {showButton && (
+        <Button text="Open in Github" onPress={() => Linking.openURL(url)} />
+      )}
     </View>
   );
 };
 
 interface Props {
   repository: Repository;
+  showButton?: boolean;
 }
 
 const styles = StyleSheet.create({
