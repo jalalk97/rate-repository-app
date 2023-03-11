@@ -30,6 +30,7 @@
     "@ungap/url-search-params": "^0.2.2",
     "dotenv": "^16.0.3",
     "expo": "~46.0.19",
+    "expo-linking": "^4.0.1",
     "expo-status-bar": "~1.4.0",
     "formik": "^2.2.9",
     "graphql": "^15.8.0",
