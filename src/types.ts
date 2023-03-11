@@ -7,6 +7,7 @@ export interface Repository {
   stargazersCount: number;
   ratingAverage: number;
   reviewCount: number;
+  reviews: ReviewConnection;
   ownerAvatarUrl: string;
   url: string;
 }
@@ -42,4 +43,26 @@ export interface CurrentUserResponse {
 
 export interface GetRepositoryResponse {
   repository: Repository;
+}
+
+export interface User {
+  id: string;
+  username: string;
+}
+
+export interface Review {
+  id: string;
+  createdAt: string;
+  rating: number;
+  text: string;
+  user: User;
+}
+
+export interface ReviewEdge {
+  node: Review;
+  cursor: string;
+}
+
+export interface ReviewConnection {
+  edges: ReviewEdge[];
 }
