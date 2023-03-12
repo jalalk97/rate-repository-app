@@ -92,3 +92,7 @@ export interface SortingPrinciple {
   orderBy: AllRepositoriesOrderBy;
   orderDirection: OrderDirection;
 }
+
+export interface RepositoriesInput extends SortingPrinciple {
+  searchKeyword: string;
+}
