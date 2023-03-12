@@ -16,8 +16,6 @@ const AppBar = () => {
 
   const handleSignOut = async () => {
     await authStorage?.removeAccessToken();
-    const token = await authStorage?.getAccessToken();
-    console.log(token);
     apolloClient.resetStore();
   };
 
@@ -25,7 +23,10 @@ const AppBar = () => {
     <View style={styles.container}>
       <ScrollView horizontal>
         <AppBarTab tabName="Repositories" link="/" />
-        {data?.me && <AppBarTab tabName="Create a review" link="/review" />}
+        {data?.me && (
+          <AppBarTab tabName="Create a review" link="/reviews/new" />
+        )}
+        {data?.me && <AppBarTab tabName="My reviews" link="/reviews" />}
         {data?.me && (
           <AppBarTab
             tabName="Sign out"

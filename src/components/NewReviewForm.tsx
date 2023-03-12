@@ -1,6 +1,6 @@
 import React from "react";
-import { useMutation } from "@apollo/client";
-import { useNavigate } from "react-router-native";
+import { useMutation, useQuery } from "@apollo/client";
+import { Navigate, useNavigate } from "react-router-native";
 import { StyleSheet, View } from "react-native";
 import { Formik, FormikProps } from "formik";
 import * as yup from "yup";
@@ -8,18 +8,28 @@ import * as yup from "yup";
 import {
   CreateReviewInput,
   CreateReviewResult,
+  CurrentUserInput,
+  CurrentUserResponse,
   NewReviewFormValues,
 } from "../types";
 import FormikTextInput from "./FormikTextInput";
 import Button from "./Button";
 import theme from "../theme";
 import { CREATE_REVIEW } from "../graphql/mutations";
+import { CURRENT_USER } from "../graphql/queries";
 
 const NewReviewForm = () => {
+  const { data } = useQuery<CurrentUserResponse, CurrentUserInput>(
+    CURRENT_USER
+  );
   const [createReview] = useMutation<CreateReviewResult, CreateReviewInput>(
     CREATE_REVIEW
   );
   const navigate = useNavigate();
+
+  if (data && !data.me) {
+    return <Navigate to="/" replace />;
+  }
 
   const handleSubmit = async (values: NewReviewFormValues) => {
     try {

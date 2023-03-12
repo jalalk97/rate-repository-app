@@ -35,10 +35,7 @@ export interface AuthenticateResult {
 }
 
 export interface CurrentUserResponse {
-  me: {
-    id: string;
-    username: string;
-  };
+  me: User;
 }
 
 export interface GetRepositoryResponse {
@@ -48,6 +45,7 @@ export interface GetRepositoryResponse {
 export interface User {
   id: string;
   username: string;
+  reviews: ReviewConnection;
 }
 
 export interface Review {
@@ -56,6 +54,7 @@ export interface Review {
   rating: number;
   text: string;
   user: User;
+  repository: Repository;
 }
 
 export interface ReviewEdge {
@@ -95,4 +94,8 @@ export interface SortingPrinciple {
 
 export interface RepositoriesInput extends SortingPrinciple {
   searchKeyword: string;
+}
+
+export interface CurrentUserInput {
+  includeReviews: boolean;
 }

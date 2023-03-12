@@ -9,6 +9,7 @@ import RepositoryList from "./RepositoryList";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 import SingleRepository from "./SingleRepository";
+import UserReviews from "./UserReviews";
 
 const Main = () => {
   return (
@@ -18,7 +19,8 @@ const Main = () => {
         <Route path="/" element={<RepositoryList />} />
         <Route path="/repositories/:id" element={<SingleRepository />} />
         <Route path="/signin" element={<SignIn />} />
-        <Route path="/review" element={<NewReviewForm />} />
+        <Route path="/reviews" element={<UserReviews />} />
+        <Route path="/reviews/new" element={<NewReviewForm />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

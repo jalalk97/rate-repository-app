@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-native";
 import { useDebounce } from "use-debounce";
-import { FlatList, View, StyleSheet, Pressable } from "react-native";
+import { FlatList, Pressable } from "react-native";
 import { Picker } from "@react-native-picker/picker";
 
 import useRepositories from "../hooks/useRepositories";
@@ -13,6 +13,7 @@ import {
   RATING_AVERAGE_DESC,
 } from "../constants/sortingPrinciples";
 import SearchBar from "./SearchBar";
+import ItemSeparator from "./ItemSeparator";
 
 const RepositoryList = () => {
   const [sortingPrinciple, setSortingPrinciple] = useState(CREATED_AT_DESC);
@@ -95,8 +96,6 @@ export const RespositoryListContainer = ({
   );
 };
 
-const ItemSeparator = () => <View style={styles.separator} />;
-
 interface RepositoryListContainerProps {
   data: RepositoriesResponse | undefined;
   sortingPrinciple: SortingPrinciple;
@@ -109,11 +108,5 @@ interface SortingPickerProps {
   sortingPrinciple: SortingPrinciple;
   onChange: (value: SortingPrinciple) => void;
 }
-
-const styles = StyleSheet.create({
-  separator: {
-    height: 10,
-  },
-});
 
 export default RepositoryList;
