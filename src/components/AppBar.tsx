@@ -33,6 +33,7 @@ const AppBar = () => {
           />
         )}
         {!data?.me && <AppBarTab tabName="Sign in" link="/signin" />}
+        {!data?.me && <AppBarTab tabName="Sign up" link="/signup" />}
       </ScrollView>
     </View>
   );
