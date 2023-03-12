@@ -83,3 +83,12 @@ export interface CreateReviewResult {
     repositoryId: string;
   };
 }
+
+export type AllRepositoriesOrderBy = "CREATED_AT" | "RATING_AVERAGE";
+
+export type OrderDirection = "ASC" | "DESC";
+
+export interface SortingPrinciple {
+  orderBy: AllRepositoriesOrderBy;
+  orderDirection: OrderDirection;
+}
