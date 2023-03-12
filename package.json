@@ -30,7 +30,7 @@
     "@ungap/url-search-params": "^0.2.2",
     "dotenv": "^16.0.3",
     "expo": "~46.0.19",
-    "expo-linking": "^4.0.1",
+    "expo-linking": "~3.2.4",
     "expo-status-bar": "~1.4.0",
     "formik": "^2.2.9",
     "graphql": "^15.8.0",
@@ -39,7 +39,8 @@
     "react-native": "0.69.6",
     "react-native-web": "~0.18.7",
     "react-router-native": "^6.8.2",
-    "yup": "^1.0.2"
+    "yup": "^1.0.2",
+    "@react-native-picker/picker": "2.4.2"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
