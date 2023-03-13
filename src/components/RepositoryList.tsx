@@ -20,7 +20,11 @@ const RepositoryList = () => {
   const [searchKeyword, setSearchKeyword] = useState("");
   const [debouncedSearch] = useDebounce(searchKeyword, 500);
 
-  const { data } = useRepositories(sortingPrinciple, debouncedSearch);
+  const { data, fetchMore } = useRepositories({
+    ...sortingPrinciple,
+    searchKeyword: debouncedSearch,
+    first: 8,
+  });
 
   const handleChange = (value: SortingPrinciple) => {
     setSortingPrinciple(value);
@@ -30,6 +34,10 @@ const RepositoryList = () => {
     setSearchKeyword(query);
   };
 
+  const onEndReached = () => {
+    fetchMore();
+  };
+
   return (
     <RespositoryListContainer
       data={data}
@@ -37,6 +45,7 @@ const RepositoryList = () => {
       onChange={handleChange}
       searchQuery={searchKeyword}
       onChangeSearch={onChangeSearch}
+      onEndReached={onEndReached}
     />
   );
 };
@@ -67,6 +76,7 @@ export const RespositoryListContainer = ({
   onChange,
   searchQuery,
   onChangeSearch,
+  onEndReached,
 }: RepositoryListContainerProps) => {
   const navigate = useNavigate();
 
@@ -92,6 +102,8 @@ export const RespositoryListContainer = ({
         </Pressable>
       )}
       keyExtractor={(item) => item.id}
+      onEndReached={onEndReached}
+      onEndReachedThreshold={0.5}
     />
   );
 };
@@ -102,6 +114,7 @@ interface RepositoryListContainerProps {
   onChange: (value: SortingPrinciple) => void;
   searchQuery: string;
   onChangeSearch: (query: string) => void;
+  onEndReached: () => void;
 }
 
 interface SortingPickerProps {

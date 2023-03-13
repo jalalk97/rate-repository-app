@@ -17,10 +17,13 @@ export interface RepositoryEdge {
   cursor: string;
 }
 
+export interface RespositoryConnection {
+  edges: RepositoryEdge[];
+  pageInfo: PageInfo;
+}
+
 export interface RepositoriesResponse {
-  repositories: {
-    edges: RepositoryEdge[];
-  };
+  repositories: RespositoryConnection;
 }
 
 export interface LoginFormValues {
@@ -40,6 +43,12 @@ export interface CurrentUserResponse {
 
 export interface GetRepositoryResponse {
   repository: Repository;
+}
+
+export interface GetRepositoryInput {
+  repositoryId: string;
+  after?: string;
+  first?: number;
 }
 
 export interface User {
@@ -64,6 +73,7 @@ export interface ReviewEdge {
 
 export interface ReviewConnection {
   edges: ReviewEdge[];
+  pageInfo: PageInfo;
 }
 
 export interface NewReviewFormValues {
@@ -92,10 +102,21 @@ export interface SortingPrinciple {
   orderDirection: OrderDirection;
 }
 
-export interface RepositoriesInput extends SortingPrinciple {
-  searchKeyword: string;
+export interface RepositoriesInput {
+  after?: string;
+  first?: number;
+  orderBy?: AllRepositoriesOrderBy;
+  orderDirection?: OrderDirection;
+  searchKeyword?: string;
 }
 
 export interface CurrentUserInput {
   includeReviews: boolean;
+}
+
+export interface PageInfo {
+  hasPreviousPage: boolean;
+  hasNextPage: boolean;
+  startCursor: string;
+  endCursor: string;
 }

@@ -36,7 +36,9 @@ const ReviewItem = ({
           text: "Delete",
           onPress: () => {
             deleteReview();
-            refetchUser();
+            if (refetchUser) {
+              refetchUser();
+            }
           },
           style: "destructive",
         },
@@ -84,7 +86,7 @@ const ReviewItem = ({
 
 interface ReviewItemProps {
   review: Review;
-  refetchUser: (
+  refetchUser?: (
     variables?: Partial<CurrentUserInput> | undefined
   ) => Promise<ApolloQueryResult<CurrentUserResponse>>;
   own?: boolean;
