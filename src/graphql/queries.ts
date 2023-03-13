@@ -40,6 +40,7 @@ export const CURRENT_USER = gql`
             createdAt
             rating
             repository {
+              id
               fullName
             }
             text

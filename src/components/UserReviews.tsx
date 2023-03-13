@@ -8,7 +8,7 @@ import ItemSeparator from "./ItemSeparator";
 import ReviewItem from "./ReviewItem";
 
 const UserReviews = () => {
-  const { data } = useQuery<CurrentUserResponse, CurrentUserInput>(
+  const { data, refetch } = useQuery<CurrentUserResponse, CurrentUserInput>(
     CURRENT_USER,
     {
       variables: { includeReviews: true },
@@ -26,7 +26,9 @@ const UserReviews = () => {
       data={reviewNodes}
       ItemSeparatorComponent={ItemSeparator}
       keyExtractor={(item) => item.id}
-      renderItem={({ item }) => <ReviewItem review={item} own />}
+      renderItem={({ item }) => (
+        <ReviewItem review={item} refetchUser={refetch} own />
+      )}
     />
   );
 };
